@@ -18,7 +18,7 @@
     $.ajax({
       type: 'GET',
       url: '/login',
-      datatype: 'JSON',
+      dataType: 'JSON',
       success: function gotToken(data){
         token = data;
         callback();

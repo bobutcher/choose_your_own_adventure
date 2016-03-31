@@ -24,9 +24,9 @@ if (window.location.search.match(/[^a-z]debug([^a-z]|$)/i)) {
 
     // Retrieve a story
     $.mockjax({
-      url: '/where/is/it',
-      type: '??',
-      proxy: 'mocks/story.json'
+      url: '/stories/storylist',
+      type: 'GET',
+      proxy: 'test/mocks/storylist.json'
     });
 
     // Retrieve all steps for a story
