@@ -15,11 +15,11 @@
  */
 if (window.location.search.match(/[^a-z]debug([^a-z]|$)/i)) {
 
-    // Create a new story
+    // Get token
     $.mockjax({
-      url: '/path/to/create', // What should this be? Negotiate it!
-      type: '??',             // This is the HTTP method for this action
-      proxy: 'mocks/new-story.json'
+      url: '/login',
+      type: 'GET',
+      proxy: 'test/mocks/token.json'
     });
 
     // Retrieve a story

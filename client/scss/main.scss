@@ -1,4 +1,21 @@
+header{
+  display: block;
+  margin: auto;
+  width: 200px;
+}
 
-nav, #create-story, #edit-story, #story-list {
+#login{
+  display: block;
+  margin: auto;
+  width: 200px;
+}
+
+form{
+  display: block;
+  margin: auto;
+  width: 50px;
+}
+
+#mainNav, #create-story, #edit-story, #story-list {
     display: none;
 }
