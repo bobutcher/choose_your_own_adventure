@@ -1,6 +1,18 @@
 [
   {
-    "prop1": "value1",
+    "title":"A Call to Arms",
+    "prop2":"value2"
+  },
+  {
+    "title":"Watership Down",
+    "prop2":"value2"
+  },
+  {
+    "title": "The Count of Monte Cristo",
+    "prop2": "value2"
+  },
+  {
+    "title": "Jurassic Park",
     "prop2": "value2"
   }
 ]

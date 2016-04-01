@@ -3,10 +3,9 @@
 /**
  * These two click handlers are operating the Nav links in the UI.
  * The nav will always be available and clicking on these two options will
- * show either all of the stories that have been created or else will created
+ * show either all of the stories that have been created or else will create
  * a new story and add it to the list.
  */
-
 
 /**
  * When clicked, this function should:
@@ -22,24 +21,23 @@
       type: 'GET',
       url: '/stories/storylist',
       dataType: 'JSON',
-      success: function gotStoryList(data) {
-        console.log(data);
+      // headers: {authorization: ns.currentToken()},
+      success: function recievedStoryList(data) {
+        console.log("receivedStoryList: " + data);
         showStoryList(data);
         return data;
       },
-      error: function errorStoryList() {
-        console.log('Error on getStoryList fn: ' + xhr);
+      error: function errorStoryList(xhr) {
+        console.log(xhr);
       }
-
     });
   }
 
   function showStoryList(array){
-    var item1 = $('<li>').text(array[0].prop1);
-    var item2 = $('<li>').text(array[0].prop2);
-    $('#story-list')
-      .append(item1)
-      .append(item2);
+    array.forEach(function addStoryToList(element){
+      var newItem = $('<li>').text(element.title);
+      $('#story-list').append(newItem);
+    });
     $('#story-list').css({display: 'block'});
   }
 
