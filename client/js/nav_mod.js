@@ -44,13 +44,16 @@
 /**
  * When clicked, this function should:
  * 1. Change the UI to a prompt asking for a new story title
- * @param  {[type]} '.create-story' [description]
- * @return {[type]}                 [description]
  */
   $('.create-story').on('click', function newStory(event){
-
+    newTitlePrompt();
   });
 
+  function newTitlePrompt() {
+    $('#story-list').css({display: 'none'});
+    $('#create-story').css({display: 'block'});
+    $('#new-story-name').focus();
+  }
 
   window.ns = ns;
 }(window.ns || {}));
