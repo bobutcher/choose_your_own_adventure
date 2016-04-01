@@ -18,7 +18,7 @@ if (window.location.search.match(/[^a-z]debug([^a-z]|$)/i)) {
     // Get token
     $.mockjax({
       url: '/login',
-      type: 'GET',
+      type: 'POST',
       proxy: 'test/mocks/token.json'
     });
 
@@ -29,11 +29,11 @@ if (window.location.search.match(/[^a-z]debug([^a-z]|$)/i)) {
       proxy: 'test/mocks/storylist.json'
     });
 
-    // Retrieve all steps for a story
+    // POST a new story
     $.mockjax({
-      url: '/steps-in-a-story',
-      type: '??',
-      proxy: 'mocks/story-steps.json'
+      url: '/stories/newstory',
+      type: 'POST',
+      proxy: 'test/mocks/newstory.json'
     });
 
     // Create a new step in a story

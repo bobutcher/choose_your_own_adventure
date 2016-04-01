@@ -56,4 +56,4 @@
   }
 
   window.ns = ns;
-}(window.ns || {}));
+})(window.ns || {});

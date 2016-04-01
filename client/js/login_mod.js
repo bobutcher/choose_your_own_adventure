@@ -16,7 +16,7 @@
 
   function getToken(callback){
     $.ajax({
-      type: 'GET',
+      type: 'POST',
       url: '/login',
       dataType: 'JSON',
       success: function gotToken(data){
@@ -40,4 +40,4 @@
   }
 
   window.ns = ns;
-}(window.ns || {}));
+})(window.ns || {});
