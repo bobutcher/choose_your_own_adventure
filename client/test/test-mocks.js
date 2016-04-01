@@ -36,11 +36,11 @@ if (window.location.search.match(/[^a-z]debug([^a-z]|$)/i)) {
       proxy: 'test/mocks/newstory.json'
     });
 
-    // Create a new step in a story
+    // add a new step to a story
     $.mockjax({
-      url: '/step-me-up',
-      type: '??',
-      proxy: 'mocks/new-step.json'
+      url: '/stories/newstep',
+      type: 'PATCH',
+      proxy: 'test/mocks/newstep.json'
     });
 
     // Update a step in a story

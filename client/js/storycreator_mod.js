@@ -28,6 +28,7 @@ function addNewStory(storyName) {
     type: 'POST',
     url: '/stories/newstory',
     dataType: 'json',
+    data: {title: storyName},
     success: function storyPosted(data) {
       console.log(data);
     },
