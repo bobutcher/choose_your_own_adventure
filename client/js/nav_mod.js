@@ -34,6 +34,7 @@
   }
 
   function showStoryList(array){
+    $('#story-list').empty();
     array.forEach(function addStoryToList(element){
       var newItem = $('<li>').text(element.title);
       $('#story-list').append(newItem);
