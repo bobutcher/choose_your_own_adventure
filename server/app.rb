@@ -21,7 +21,7 @@ end
 post "/stories" do
   body = request.body.read
   payload = JSON.parse(body)
-  story = Story.create!(payload)
+  story = Story.create(payload)
   story.to_json
 end
 
