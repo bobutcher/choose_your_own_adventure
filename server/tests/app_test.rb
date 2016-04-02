@@ -7,18 +7,40 @@ class AppTest < Minitest::Test
     Sinatra::Application
   end
 
-  def test_declares_its_name
-    response = get "/backend"
+  def test_login_generates_token
+    response = post "/login"
     assert response.ok?
-    assert_equal "I am Groot!", response.body
+    assert_equal String, SecureRandom.hex.class
   end
 
-  def test_backend_echo_endpoint_will_return_exact_msg_back
-    hash = { "name" => "bob" }
-    response = post("/backend/echo", hash.to_json, { "CONTENT_TYPE" => "application/json" })
+  def test_title_can_be_created
+    header "CONTENT_TYPE",  "application/json"
+    test_hash = { :title => "Knights of the round table" }
+    response = post "/stories", test_hash.to_json
 
-    assert response.ok?
-    payload = JSON.parse(response.body)
-    assert_equal(hash, payload)
+    assert_equal "Knights of the round table", test_hash[:title]
   end
+
+  def test_can_call_single_story
+    header "CONTENT_TYPE", "application/json"
+    response = get "/stories/1"
+
+  end
+
+  def test_returns_404_error
+    skip
+  end
+
+#   def test_story_class_exists
+#     assert Story
+#   end
+#
+#   def test_can_create_new_story
+#     Story.new
+#   end
+#
+#   def test_can_delete_story
+#
+#   end
+#
 end

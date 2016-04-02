@@ -14,15 +14,32 @@ before do
   content_type "application/json"
 end
 
-get "/backend" do
-  "I am Groot!"
+post "/login" do
+  token = SecureRandom.hex
 end
-#
-# post "/backend/echo" do
-#   payload = JSON.parse(request.body.read)
-#   payload.to_json
-# end
 
-get "/backend/steps" do
-  Step.all.to_json
+post "/stories" do
+  body = request.body.read
+  payload = JSON.parse(body)
+  story = Story.create!(payload)
+  story.to_json
 end
+
+get "/stories/:id" do
+  params[:id]
+
+end
+
+
+
+# get "/stories/storylist" do
+#
+# end
+#
+# delete "stories/delete" do
+#
+# end
+#
+# patch "stories/update" do
+#
+# end
