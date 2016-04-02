@@ -20,7 +20,8 @@ $('.create-story-step').on('submit', function createNewStep(event) {
   var stepText = $('#new-step-text').val();
   var choiceA = $('#new-step-option-a').val();
   var choiceB = $('#new-step-option-b').val();
-  addNewStepToAjax(storyID, parentID, stepText, choiceA, choiceB);
+  var deadend = $('#deadend').is(':checked');
+  addNewStepToAjax(storyID, parentID, stepText, choiceA, choiceB, deadend);
   $('#new-step-text').val('');
   $('#new-step-option-a').val('');
   $('#new-step-option-b').val('');
@@ -28,16 +29,16 @@ $('.create-story-step').on('submit', function createNewStep(event) {
   $('#' + parentID).closest('section').find('button').remove();
 });
 
-function addNewStepToAjax(storyID, parentID, stepText, choiceA, choiceB) {
+function addNewStepToAjax(storyID, parentID, stepText, choiceA, choiceB, deadend) {
   $.ajax({
     type: 'PATCH',
     url: '/stories/newstep',
     headers: {authorization: ns.currentToken()},
     dataType: 'json',
     contentType: 'application/json',
-    data: JSON.stringify({storyID: storyID, parentID: parentID, steptext: stepText, choiceA: choiceA, choiceB: choiceB}),
+    data: JSON.stringify({storyID: storyID, parentID: parentID, steptext: stepText, choiceA: choiceA, choiceB: choiceB, deadend: deadend}),
     success: function newStepAdded(data) {
-      updateStepList(parentID, stepText, choiceA, choiceB, data.optionAID, data.optionBID);
+      updateStepList(parentID, stepText, choiceA, choiceB, data.optionAID, data.optionBID, deadend);
     },
     error: function errorStepAdded(xhr) {
       console.log(xhr);
@@ -55,8 +56,8 @@ function addNewStepToAjax(storyID, parentID, stepText, choiceA, choiceB) {
  * @param  {[string]} choiceA  [text from step editing choice A field]
  * @param  {[string]} choiceB  [text from step editing choice B field]
  */
-function updateStepList(parentID, stepText, choiceA, choiceB, optionAID, optionBID) {
-  var parent = $('<p>')
+function updateStepList(parentID, stepText, choiceA, choiceB, optionAID, optionBID, deadend) {
+  var parent = $('<aside>')
                 .addClass('parentID')
                 .css({display: 'none'})
                 .text(parentID);
@@ -93,25 +94,38 @@ function updateStepList(parentID, stepText, choiceA, choiceB, optionAID, optionB
   var addStepButtonB = $('<button>')
                           .addClass('addStepButtonB')
                           .text('+');
-  var newStepListItem = $('<li>')
-                          .append(parent)
-                          .append($('<section>')
-                            .append(text)
-                            .append(textEditButton)
-                            .append(textEdit)
-                          )
-                          .append($('<section>')
-                            .append(optionA)
-                            .append(optionAEdit)
-                            .append(addStepButtonA)
-                          )
-                          .append($('<section>')
-                            .append(optionB)
-                            .append(optionBEdit)
-                            .append(addStepButtonB)
-                          );
-  $('.stepsList')
-    .append(newStepListItem);
+  if (!deadend) {
+    $('.stepsList')
+      .append($('<li>')
+                  .append(parent)
+                  .append($('<section>')
+                    .append(text)
+                    .append(textEditButton)
+                    .append(textEdit)
+                  )
+                  .append($('<section>')
+                    .append(optionA)
+                    .append(optionAEdit)
+                    .append(addStepButtonA)
+                  )
+                  .append($('<section>')
+                    .append(optionB)
+                    .append(optionBEdit)
+                    .append(addStepButtonB)
+                  )
+      );
+  }
+  else {
+    $('.stepsList')
+      .append($('<li>')
+                  .append(parent)
+                  .append($('<section>')
+                    .append(text)
+                    .append(textEditButton)
+                    .append(textEdit)
+                  )
+      );
+  }
 }
 
 /**
@@ -129,7 +143,6 @@ $('.stepsList').on('click', '.editButton', function editText(event) {
  */
 $('.stepsList').on('keyup', '.editOption', function stopEditText(event) {
   if(event.keyCode === 13){
-    $('.editOption').css({display: 'none'});
     $(this).closest('li').find('p').css({display: 'block'});
     $(this).closest('li').find('.editOption').css({display: 'none'});
     $(this).closest('li').find('.stepText')
