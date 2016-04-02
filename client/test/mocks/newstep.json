@@ -1,1 +1,8 @@
-"New Step Worked"
+{
+  "text": "Left or right",
+  "stepID": "000",
+  "optionA": "Go left",
+  "optionAID": "111",
+  "optionB": "Go right",
+  "optionBID": "222"
+}

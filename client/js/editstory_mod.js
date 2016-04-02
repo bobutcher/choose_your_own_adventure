@@ -15,23 +15,27 @@
  */
 $('.create-story-step').on('submit', function createNewStep(event) {
   event.preventDefault();
-  console.log('submit is happening');
+  var storyID = $('.story-id').val();
   var stepText = $('#new-step-text').val();
   var choiceA = $('#new-step-option-a').val();
   var choiceB = $('#new-step-option-b').val();
-  addNewStep(stepText, choiceA, choiceB);
-  updateStepList(stepText, choiceA, choiceB);
+  addNewStepToAjax(storyID, stepText, choiceA, choiceB);
+  $('#new-step-text').val('');
+  $('#new-step-option-a').val('');
+  $('#new-step-option-b').val('');
+  $('#parentID').text('');
+  $('.create-story-step').css({display: 'none'});
 });
 
-function addNewStep(stepText, choiceA, choiceB) {
+function addNewStepToAjax(storyID, stepText, choiceA, choiceB) {
   $.ajax({
     type: 'PATCH',
     url: '/stories/newstep',
     dataType: 'json',
     contentType: 'application/json',
-    data: JSON.stringify({steptext: stepText, choiceA: choiceA, choiceB: choiceB}),
+    data: JSON.stringify({storyID: storyID, steptext: stepText, choiceA: choiceA, choiceB: choiceB}),
     success: function newStepAdded(data) {
-      console.log(data);
+      updateStepList(stepText, choiceA, choiceB, data.optionAID, data.optionBID);
     },
     error: function errorStepAdded(xhr) {
       console.log(xhr);
@@ -50,12 +54,11 @@ function addNewStep(stepText, choiceA, choiceB) {
  * @param  {[string]} choiceA  [text from step editing choice A field]
  * @param  {[string]} choiceB  [text from step editing choice B field]
  */
-function updateStepList(stepText, choiceA, choiceB) {
+function updateStepList(stepText, choiceA, choiceB, optionAID, optionBID) {
   var text = $('<p>')
                 .addClass('stepText')
                 .text(stepText);
   var textEditButton = $('<button>')
-                      .attr({id: '1'})
                       .addClass('editButton')
                       .text('edit')
                       .css({display: 'block'});
@@ -64,6 +67,7 @@ function updateStepList(stepText, choiceA, choiceB) {
                       .val(stepText)
                       .css({display: 'none'});
   var optionA = $('<p>')
+                  .attr({id: optionAID})
                   .addClass('choiceA')
                   .text(choiceA);
   var optionAEdit = $('<input>')
@@ -71,10 +75,10 @@ function updateStepList(stepText, choiceA, choiceB) {
                       .val(choiceA)
                       .css({display: 'none'});
   var addStepButtonA = $('<button>')
-                          .attr({id: '2'})
-                          .addClass('addStepButton')
+                          .addClass('addStepButtonA')
                           .text('+');
   var optionB = $('<p>')
+                  .attr({id: optionBID})
                   .addClass('choiceB')
                   .text(choiceB);
   var optionBEdit = $('<input>')
@@ -82,8 +86,7 @@ function updateStepList(stepText, choiceA, choiceB) {
                       .val(choiceB)
                       .css({display: 'none'});
   var addStepButtonB = $('<button>')
-                          .attr({id: '2'})
-                          .addClass('addStepButton')
+                          .addClass('addStepButtonB')
                           .text('+');
   var newStepListItem = $('<li>')
                           .append($('<section>')
@@ -105,20 +108,56 @@ function updateStepList(stepText, choiceA, choiceB) {
     .append(newStepListItem);
 }
 
+
+/**
+ * Listens for a click on the edit button for a step and provides the input
+ * field to end all three pieces (text, opt1, opt2).
+ */
 $('.stepsList').on('click', '.editButton', function editText(event) {
-  $(this).closest('section').find('p').css({display: 'none'});
+  $(this).closest('li').find('p').css({display: 'none'});
   $(this).closest('li').find('.editOption').css({display: 'block'});
 });
 
+/**
+ * Listens for 'enter' on the inputs for editing a step and toggles back to
+ * the text instead of the inputs.
+ */
 $('.stepsList').on('keyup', '.editOption', function stopEditText(event) {
   if(event.keyCode === 13){
     $('.editOption').css({display: 'none'});
-    $('.stepText').css({display: 'block'}).text($('.textEdit').val());
-    $('.choiceA').css({display: 'block'}).text($('.editOptionA').val());
-    $('.choiceB').css({display: 'block'}).text($('.editOptionB').val());
+    $(this).closest('li').find('p').css({display: 'block'});
+    $(this).closest('li').find('.editOption').css({display: 'none'});
+    $(this).closest('li').find('.stepText')
+      .text(
+        $(this).closest('li').find('.textEdit').val()
+      );
+    $(this).closest('li').find('.choiceA')
+      .text(
+        $(this).closest('li').find('.editOptionA').val()
+      );  
+    $(this).closest('li').find('.choiceB')
+      .text(
+        $(this).closest('li').find('.editOptionB').val()
+      );
   }
 });
 
+/**
+ * These three are for adding a new step after the chosen option.
+ */
+$('.stepsList').on('click', '.addStepButtonA', function addNewStepToA() {
+    addNewStep($(this).closest('section').find('.choiceA').attr('id'));
+});
+
+$('.stepsList').on('click', '.addStepButtonB', function addNewStepToB() {
+    addNewStep($(this).closest('section').find('.choiceB').attr('id'));
+});
+
+function addNewStep(IDNumber) {
+  $('#parentID').text('Parent ID#: ' + IDNumber);
+  $('.create-story-step').css({display: 'block'});
+
+}
 
 
   window.ns = ns;

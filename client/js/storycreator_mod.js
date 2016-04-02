@@ -15,7 +15,6 @@ $('#newStoryNameForm').on('submit', function newStoryTrigger(event) {
     event.preventDefault();
     var storyTitle = $('#new-story-name').val();
     addNewStory(storyTitle);
-    storyEditUI(storyTitle);
 });
 
 
@@ -28,9 +27,10 @@ function addNewStory(storyName) {
     type: 'POST',
     url: '/stories/newstory',
     dataType: 'json',
+    contentType: 'application.json',
     data: {title: storyName},
     success: function storyPosted(data) {
-      console.log(data);
+      storyEditUI(data.title, data.ID);
     },
     error: function errorStoryPosted(xhr) {
       console.log(xhr);
@@ -38,9 +38,12 @@ function addNewStory(storyName) {
   });
 }
 
-function storyEditUI() {
+function storyEditUI(storyName, storyID) {
+  $('.story-name').text(storyName);
+  $('.story-id').val(storyID);
   $('#create-story').css({display: 'none'});
   $('#edit-story').css({display: 'block'});
+  $('#parentID').text('Beginning');
 }
 
 
