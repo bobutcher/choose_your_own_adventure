@@ -16,7 +16,7 @@
 $('.create-story-step').on('submit', function createNewStep(event) {
   event.preventDefault();
   var storyID = $('.story-id').val();
-  var parentID = $('#parentID').attr('id');
+  var parentID = $('#parentID').text();
   var stepText = $('#new-step-text').val();
   var choiceA = $('#new-step-option-a').val();
   var choiceB = $('#new-step-option-b').val();
@@ -24,9 +24,8 @@ $('.create-story-step').on('submit', function createNewStep(event) {
   $('#new-step-text').val('');
   $('#new-step-option-a').val('');
   $('#new-step-option-b').val('');
-  $('#parentID').attr({id: ''});
-  $('#parentID').text('');
   $('.create-story-step').css({display: 'none'});
+  $('#' + parentID).closest('section').find('button').remove();
 });
 
 function addNewStepToAjax(storyID, parentID, stepText, choiceA, choiceB) {
@@ -179,14 +178,16 @@ function newEditsAjax(storyID, parentID, stepText, optionA, optionB) {
  */
 $('.stepsList').on('click', '.addStepButtonA', function addNewStepToA() {
     addNewStep($(this).closest('section').find('.choiceA').attr('id'));
+    $(this).css({display: 'none'});
 });
 
 $('.stepsList').on('click', '.addStepButtonB', function addNewStepToB() {
     addNewStep($(this).closest('section').find('.choiceB').attr('id'));
+    $(this).css({display: 'none'});
 });
 
 function addNewStep(IDNumber) {
-  $('#parentID').text('Parent ID#: ' + IDNumber);
+  $('#parentID').text(IDNumber);
   $('.create-story-step').css({display: 'block'});
 
 }
