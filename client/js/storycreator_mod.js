@@ -26,6 +26,7 @@ function addNewStory(storyName) {
   $.ajax({
     type: 'POST',
     url: '/stories/newstory',
+    headers: {authorization: ns.currentToken()},
     dataType: 'json',
     contentType: 'application.json',
     data: {title: storyName},

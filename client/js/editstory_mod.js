@@ -32,6 +32,7 @@ function addNewStepToAjax(storyID, parentID, stepText, choiceA, choiceB) {
   $.ajax({
     type: 'PATCH',
     url: '/stories/newstep',
+    headers: {authorization: ns.currentToken()},
     dataType: 'json',
     contentType: 'application/json',
     data: JSON.stringify({storyID: storyID, parentID: parentID, steptext: stepText, choiceA: choiceA, choiceB: choiceB}),
@@ -156,6 +157,7 @@ function newEditsAjax(storyID, parentID, stepText, optionA, optionB) {
   $.ajax({
     type: 'PATCH',
     url: '/stories/editstep',
+    headers: {authorization: ns.currentToken()},
     dataType: 'json',
     contentType: 'application/json',
     data: JSON.stringify({

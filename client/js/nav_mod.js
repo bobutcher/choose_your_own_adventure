@@ -20,8 +20,8 @@
     $.ajax({
       type: 'GET',
       url: '/stories/storylist',
+      headers: {authorization: ns.currentToken()},
       dataType: 'JSON',
-      // headers: {authorization: ns.currentToken()},
       success: function recievedStoryList(data) {
         console.log("receivedStoryList: " + data);
         showStoryList(data);
