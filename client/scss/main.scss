@@ -1,21 +1,12 @@
-header{
-  display: block;
-  margin: auto;
-  width: 200px;
-}
-
-#login{
-  display: block;
-  margin: auto;
-  width: 200px;
-}
-
-form{
-  display: block;
-  margin: auto;
-  width: 50px;
-}
+@import 'cssreset';
+@import 'variables';
 
 #mainNav, #create-story, #edit-story, #story-list {
     display: none;
 }
+body{
+  background-color: #4B9030;
+}
+
+@import 'headerandnav';
+@import 'login';

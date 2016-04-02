@@ -36,8 +36,17 @@
   function initStoryUI() {
     $('#login').css({display: 'none'});
     $('#mainNav').css({display: 'block'});
-
   }
+
+  $('#loginform').on('mousedown', '#loginbutton', function styleLoginClick() {
+    $(this).css({border: 'solid #97CC59 1px'});
+  });
+
+  $('#loginform').on('mouseleave', '#loginbutton', function styleLoginClick() {
+    $(this).css({border: 'solid black 1px'});
+  });
+
+
 
   window.ns = ns;
 })(window.ns || {});
