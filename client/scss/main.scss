@@ -1,11 +1,11 @@
 @import 'cssreset';
 @import 'variables';
 
-#mainNav, #create-story, #edit-story, #story-list {
+#create-story, #edit-story, #story-list {
     display: none;
 }
 body{
-  background-color: #4B9030;
+  background-color: #1F7324;
 }
 
 @import 'headerandnav';
