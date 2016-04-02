@@ -16,33 +16,34 @@
 $('.create-story-step').on('submit', function createNewStep(event) {
   event.preventDefault();
   var storyID = $('.story-id').val();
+  var parentID = $('#parentID').attr('id');
   var stepText = $('#new-step-text').val();
   var choiceA = $('#new-step-option-a').val();
   var choiceB = $('#new-step-option-b').val();
-  addNewStepToAjax(storyID, stepText, choiceA, choiceB);
+  addNewStepToAjax(storyID, parentID, stepText, choiceA, choiceB);
   $('#new-step-text').val('');
   $('#new-step-option-a').val('');
   $('#new-step-option-b').val('');
+  $('#parentID').attr({id: ''});
   $('#parentID').text('');
   $('.create-story-step').css({display: 'none'});
 });
 
-function addNewStepToAjax(storyID, stepText, choiceA, choiceB) {
+function addNewStepToAjax(storyID, parentID, stepText, choiceA, choiceB) {
   $.ajax({
     type: 'PATCH',
     url: '/stories/newstep',
     dataType: 'json',
     contentType: 'application/json',
-    data: JSON.stringify({storyID: storyID, steptext: stepText, choiceA: choiceA, choiceB: choiceB}),
+    data: JSON.stringify({storyID: storyID, parentID: parentID, steptext: stepText, choiceA: choiceA, choiceB: choiceB}),
     success: function newStepAdded(data) {
-      updateStepList(stepText, choiceA, choiceB, data.optionAID, data.optionBID);
+      updateStepList(parentID, stepText, choiceA, choiceB, data.optionAID, data.optionBID);
     },
     error: function errorStepAdded(xhr) {
       console.log(xhr);
     }
   });
 }
-
 
 /**
  * This function should take in the values from:
@@ -54,7 +55,11 @@ function addNewStepToAjax(storyID, stepText, choiceA, choiceB) {
  * @param  {[string]} choiceA  [text from step editing choice A field]
  * @param  {[string]} choiceB  [text from step editing choice B field]
  */
-function updateStepList(stepText, choiceA, choiceB, optionAID, optionBID) {
+function updateStepList(parentID, stepText, choiceA, choiceB, optionAID, optionBID) {
+  var parent = $('<p>')
+                .addClass('parentID')
+                .css({display: 'none'})
+                .text(parentID);
   var text = $('<p>')
                 .addClass('stepText')
                 .text(stepText);
@@ -89,6 +94,7 @@ function updateStepList(stepText, choiceA, choiceB, optionAID, optionBID) {
                           .addClass('addStepButtonB')
                           .text('+');
   var newStepListItem = $('<li>')
+                          .append(parent)
                           .append($('<section>')
                             .append(text)
                             .append(textEditButton)
@@ -107,7 +113,6 @@ function updateStepList(stepText, choiceA, choiceB, optionAID, optionBID) {
   $('.stepsList')
     .append(newStepListItem);
 }
-
 
 /**
  * Listens for a click on the edit button for a step and provides the input
@@ -134,13 +139,40 @@ $('.stepsList').on('keyup', '.editOption', function stopEditText(event) {
     $(this).closest('li').find('.choiceA')
       .text(
         $(this).closest('li').find('.editOptionA').val()
-      );  
+      );
     $(this).closest('li').find('.choiceB')
       .text(
         $(this).closest('li').find('.editOptionB').val()
       );
+    newEditsAjax( $('.story-id').val(),
+                  $(this).closest('li').find('.parentID').text(),
+                  $(this).closest('li').find('.stepText').text(),
+                  $(this).closest('li').find('.choiceA').text(),
+                  $(this).closest('li').find('.choiceB').text()
+                );
   }
 });
+
+function newEditsAjax(storyID, parentID, stepText, optionA, optionB) {
+  $.ajax({
+    type: 'PATCH',
+    url: '/stories/editstep',
+    dataType: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+                  storyID: storyID,
+                  parentID: parentID,
+                  steptext: stepText,
+                  optionA: optionA,
+                  optionB: optionB}),
+    success: function appliedEdits(data) {
+      console.log(data);
+    },
+    error: function errorAppliedEdits(xhr) {
+      console.log(xhr);
+    }
+  });
+}
 
 /**
  * These three are for adding a new step after the chosen option.
