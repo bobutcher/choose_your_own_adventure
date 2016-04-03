@@ -50,7 +50,7 @@
                 <form class='create-story-step'>
                     <input type='hidden' class='story-id' value=''>
                     <h3>New Step</h3>
-                    <h4 id="parentID"><h4>
+                    <h4 id="parentID"></h4>
                     <fieldset>
                         <label for="new-step-text">Step Text</label>
                         <textarea id='new-step-text'></textarea>
@@ -78,8 +78,11 @@
                     </fieldset>
                 </form>
 
-                <h3>Current Steps</h3>
-                <ul class="stepsList"></ul>
+                <div class="existing-steps">
+                  <h2 id="existing-steps-label">Existing Steps:</h2>
+                  <ul class="stepsList"></ul>
+                </div>
+
             </section>
         </main>
         <script src='http://code.jquery.com/jquery-2.2.2.min.js'></script>
