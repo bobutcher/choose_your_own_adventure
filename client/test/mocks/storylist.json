@@ -1,17 +1,21 @@
 [
   {
+    "ID":"0001",
     "title":"A Call to Arms",
     "prop2":"value2"
   },
   {
+    "ID":"0002",
     "title":"Watership Down",
     "prop2":"value2"
   },
   {
+    "ID":"0003",
     "title": "The Count of Monte Cristo",
     "prop2": "value2"
   },
   {
+    "ID":"0004",
     "title": "Jurassic Park",
     "prop2": "value2"
   }

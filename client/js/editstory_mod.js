@@ -56,7 +56,7 @@ function addNewStepToAjax(storyID, parentID, stepText, choiceA, choiceB, deadend
  * @param  {[string]} choiceA  [text from step editing choice A field]
  * @param  {[string]} choiceB  [text from step editing choice B field]
  */
-function updateStepList(parentID, stepText, choiceA, choiceB, optionAID, optionBID, deadend) {
+ns.updateStepList = function updateStepList(parentID, stepText, choiceA, choiceB, optionAID, optionBID, deadend) {
   var parent = $('<aside>')
                 .addClass('parentID')
                 .css({display: 'none'})
@@ -126,7 +126,7 @@ function updateStepList(parentID, stepText, choiceA, choiceB, optionAID, optionB
                   )
       );
   }
-}
+};
 
 /**
  * Listens for a click on the edit button for a step and provides the input

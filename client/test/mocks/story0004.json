@@ -1,0 +1,46 @@
+{
+  "storyID":"0004",
+  "title":"Jurassic Park",
+  "storySteps":[
+    {
+      "stepID":"00001",
+      "parentID":"00000",
+      "optionAID":"00001A",
+      "optionBID":"00001B",
+      "deadend":false,
+      "stepText":"This is step one",
+      "optionAText":"Choose A",
+      "optionBText":"Choose B"
+    },
+    {
+      "stepID":"00002",
+      "parentID":"00001A",
+      "optionAID":"00002A",
+      "optionBID":"00002B",
+      "deadend":false,
+      "stepText":"This is step two",
+      "optionAText":"Choose A",
+      "optionBText":"Choose B"
+    },
+    {
+      "stepID":"00003",
+      "parentID":"00001B",
+      "optionAID":"00003A",
+      "optionBID":"00003B",
+      "deadend":false,
+      "stepText":"This is step three",
+      "optionAText":"Choose A",
+      "optionBText":"Choose B"
+    },
+    {
+      "stepID":"00004",
+      "parentID":"00002A",
+      "optionAID":"00004A",
+      "optionBID":"00004B",
+      "deadend":true,
+      "stepText":"This is step four",
+      "optionAText":"Choose A",
+      "optionBText":"Choose B"
+    }
+  ]
+}

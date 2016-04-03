@@ -50,4 +50,32 @@ if (window.location.search.match(/[^a-z]debug([^a-z]|$)/i)) {
       proxy: 'test/mocks/stepedit.json'
     });
 
+    // find story by ID 0001
+    $.mockjax({
+      url: '/stories/0001',
+      type: 'GET',
+      proxy: 'test/mocks/story0001.json'
+    });
+
+    // find story by ID 0002
+    $.mockjax({
+      url: '/stories/0002',
+      type: 'GET',
+      proxy: 'test/mocks/story0002.json'
+    });
+
+    // find story by ID 0003
+    $.mockjax({
+      url: '/stories/0003',
+      type: 'GET',
+      proxy: 'test/mocks/story0003.json'
+    });
+
+    // find story by ID 0004
+    $.mockjax({
+      url: '/stories/0004',
+      type: 'GET',
+      proxy: 'test/mocks/story0004.json'
+    });
+
 }

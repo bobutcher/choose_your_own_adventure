@@ -23,7 +23,6 @@
       headers: {authorization: ns.currentToken()},
       dataType: 'JSON',
       success: function recievedStoryList(data) {
-        console.log("receivedStoryList: " + data);
         showStoryList(data);
         return data;
       },
@@ -36,10 +35,16 @@
   function showStoryList(array){
     $('#story-list').empty();
     array.forEach(function addStoryToList(element){
-      var newItem = $('<li>').text(element.title);
-      $('#story-list').append(newItem);
+      $('#story-list')
+        .append(
+          $('<li>').text(element.title).attr({id: element.ID})
+            .append(
+              $('<aside>').text('X').addClass('deleteButton')
+            )
+        );
     });
     $('#story-list').css({display: 'block'});
+    $('#create-story').css({display: 'none'});
   }
 
 /**

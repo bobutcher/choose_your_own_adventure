@@ -1,0 +1,15 @@
+#story-list{
+  list-style: none;
+  font-family: $defaultFont;
+  font-size: 1.5em;
+  margin: auto;
+  margin-top: 20px;
+  display: block;
+  width: 30%;
+  line-height: 50px;
+  background-color: #4B9030;
+  li{
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+}
