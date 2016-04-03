@@ -1,7 +1,7 @@
 (function(ns) {
   'use strict';
 
-//This module should handle the moment when a user clicks on one of the existing
+//This module should handle the moment when a user clicks on one of the
 //existing stories from the story list. It should:
 //1. make an ajax request for the selected story
 //2. clear the UI and replace it with the edit story UI of the selected story
@@ -31,6 +31,8 @@
     $('.stepsList').empty();
     storyData.storySteps.forEach(function addToStepsList(each) {
       ns.updateStepList(
+                        storyData.storyID,
+                        each.stepID,
                         each.parentID,
                         each.stepText,
                         each.optionAText,
