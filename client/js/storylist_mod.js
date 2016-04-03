@@ -42,6 +42,7 @@
       );
     });
     ns.storyEditUI(storyData.title, storyData.storyID);
+    $('.create-story-step').css({display: 'none'});
   }
 
   $('.deleteButton').on('click', function deleteEntry(event) {
