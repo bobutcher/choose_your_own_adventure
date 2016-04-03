@@ -1,7 +1,7 @@
 @import 'cssreset';
 @import 'variables';
 
-#create-story, #edit-story, #story-list {
+#story-side, #create-story, #edit-story, #story-list {
     display: none;
 }
 body{
@@ -11,3 +11,4 @@ body{
 @import 'headerandnav';
 @import 'login';
 @import 'storylist';
+@import 'newstory';

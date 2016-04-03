@@ -13,7 +13,12 @@
  * 2. Change the UI to show a list of stories but only after Ajax gets back
  */
   $('.list-stories').on('click', function listStories(event){
+    if($('#story-list').css('display') === 'none'){
     getStoryList();
+  } else{
+    $('#story-list').css({display: 'none'});
+    $('.menu-arrow').css({display: 'none'});
+  }
   });
 
   function getStoryList() {

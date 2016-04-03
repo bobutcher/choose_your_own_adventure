@@ -1,0 +1,30 @@
+#create-story{
+  position: relative;
+  left: 27%;
+  width: 25%;
+  padding: 30px 15px;
+  margin-top: 15px;
+  background-color: #4E9033;
+  font-family: $defaultFont;
+  text-align: center;
+  box-shadow: 3px 3px 25px black;
+  h2{
+    font-size: 1.85em;
+    margin-bottom: 25px;
+  }
+  label{
+    font-size: 1em;
+    margin-right: 10px;
+  }
+  input{
+    width: 50%;
+    height: 2em;
+    font-family: $defaultFont;
+    font-size: 1em;
+    border: solid black 1px;
+    background-color: #7DB445;
+    &:focus{
+      outline: none;
+    }
+  }
+}

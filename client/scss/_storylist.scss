@@ -7,31 +7,33 @@
   top: 0;
   left: 2%;
   margin-top: 15px;
-  display: block;
   width: 20%;
   background-color: #7DB445;
   box-shadow: 6px 6px 25px black;
+  cursor: default;
   li{
     width: 100%;
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    &:hover{
+      text-shadow: 0px 0px 10px #EAE3AF;
+    }
   }
   li:nth-child(odd){
-    background-color: #B5D577;
+    background-color: #4E9033;
   }
   li:nth-child(even){
     background-color: #7DB445;
   }
   .menu-arrow{
     display: none;
-    background-color: #B5D577;
+    background-color: #4E9033;
     width: 15px;
     height: 15px;
     position: absolute;
     top: -7px;
     left: 75%;
     transform: rotate(45deg);
-    z-index: -1;
   }
 }
