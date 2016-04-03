@@ -81,7 +81,7 @@ ns.updateStepList = function updateStepList(storyID, stepID, parentID, stepText,
                       .append(
                         $('<i>').addClass("fa fa-pencil-square-o")
                       );
-  var textEdit = $('<input>')
+  var textEdit = $('<textarea>')
                       .addClass('editOption textEdit')
                       .val(stepText)
                       .css({display: 'none'});
@@ -96,9 +96,15 @@ ns.updateStepList = function updateStepList(storyID, stepID, parentID, stepText,
                       .addClass('editOption editOptionA')
                       .val(choiceA)
                       .css({display: 'none'});
-  var addStepButtonA = $('<button>')
+  var addStepButtonA = $('<aside>')
                           .addClass('addStepButtonA')
-                          .text('+');
+                          .append(
+                            $('<span>')
+                              .attr({title: 'click to add a step following this one'})
+                              .append(
+                                $('<i>').addClass('fa fa-plus')
+                              )
+                          );
   var optionB = $('<p>')
                   .attr({id: optionBID})
                   .addClass('choiceB')
@@ -110,9 +116,15 @@ ns.updateStepList = function updateStepList(storyID, stepID, parentID, stepText,
                       .addClass('editOption editOptionB')
                       .val(choiceB)
                       .css({display: 'none'});
-  var addStepButtonB = $('<button>')
+  var addStepButtonB = $('<aside>')
                           .addClass('addStepButtonB')
-                          .text('+');
+                          .append(
+                            $('<span>')
+                              .attr({title: 'click to add a step following this one'})
+                              .append(
+                                $('<i>').addClass('fa fa-plus')
+                              )
+                          );
   if (!deadend) {
     $('.stepsList')
       .append($('<li>')

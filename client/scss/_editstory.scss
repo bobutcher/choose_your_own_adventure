@@ -3,7 +3,7 @@
   left: 27%;
   width: 70%;
   min-height: 535px;
-  padding: 15px;
+  padding: 12px;
   margin-top: 15px;
   background-color: #4E9033;
   font-family: $defaultFont;
@@ -70,7 +70,7 @@
   }
   .existing-steps{
     position: absolute;
-    top: 70px;
+    top: 68px;
     right: 15px;
     width: 50%;
     height: 450px;
@@ -91,18 +91,52 @@
       width: 80%;
       .stepText{
         position: relative;
+        min-height: 100px;
+        padding: 10px;
+      }
+      .textEdit{
+        position: relative;
+        background-color: #7DB445;
+        border: solid black 1px;
+        width: 65%;
+        min-height: 100px;
+        padding: 10px;
+        font-family: $defaultFont;
+        font-size: 1em;
+        vertical-align: top;
       }
       li{
+        background-color: #1F7324;
         position: relative;
-        margin: 20px;
+        margin: 0px;
         section{
           margin-top: 20px;
+          p{
+            padding: 10px;
+          }
+          .editOption{
+            font-family: $defaultFont;
+            background-color: #7DB445;
+            border: solid black 1px;
+          }
+        }
+        .addStepButtonA, .addStepButtonB{
+          position: relative;
+          top: -37px;
+          padding: 10px;
+          font-size: 0.75em;
+          text-align: right;
+          i{
+            font-size: 1.5em;
+            margin-left: 5px;
+          }
         }
       }
       .deleteStep{
         position: absolute;
         top: 0;
         right: 0;
+        margin: 10px;
         height: 15px;
         width: 15px;
         text-align: center;
@@ -116,6 +150,7 @@
         }
       }
       .editButton{
+        padding: 10px;
         position: absolute;
         top: 0;
         right: 25px;
