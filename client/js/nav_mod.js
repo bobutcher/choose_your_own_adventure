@@ -62,9 +62,16 @@
   });
 
   function newTitlePrompt() {
-    $('#story-list').css({display: 'none'});
-    $('#create-story').css({display: 'block'});
-    $('#new-story-name').focus();
+    if($('#create-story').css('display') === 'none'){
+        $('#story-list').css({display: 'none'});
+        $('#create-story').css({display: 'block'});
+        $('#new-story-name').focus();
+        $('.menu-arrow').css({display: 'block'});
+    }
+    else {
+        $('#create-story').css({display: 'none'});
+        $('.menu-arrow').css({display: 'none'});
+    }
   }
 
   window.ns = ns;

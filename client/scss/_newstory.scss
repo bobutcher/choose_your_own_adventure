@@ -27,4 +27,14 @@
       outline: none;
     }
   }
+  .menu-arrow{
+    display: none;
+    background-color: #4E9033;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: -7px;
+    left: 15%;
+    transform: rotate(45deg);
+  }
 }
