@@ -7,10 +7,12 @@
   top: 0;
   left: 2%;
   margin-top: 15px;
+  float: left;
   width: 20%;
   background-color: #7DB445;
   box-shadow: 6px 6px 25px black;
   cursor: default;
+  transition: 0.5s;
   li{
     width: 100%;
     padding-right: 10px;

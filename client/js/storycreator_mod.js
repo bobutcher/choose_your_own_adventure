@@ -30,6 +30,8 @@ function addNewStory(storyName) {
     contentType: 'application/json',
     data: JSON.stringify({title: storyName}),
     success: function storyPosted(data) {
+      $('.stepsList').empty();
+      $('.create-story-step').css({display: 'block'});
       ns.storyEditUI(data.title, data.ID);
     },
     error: function errorStoryPosted(xhr) {
@@ -43,7 +45,6 @@ ns.storyEditUI = function storyEditUI(storyName, storyID) {
   $('.story-id').val(storyID);
   $('#create-story').css({display: 'none'});
   $('#edit-story').css({display: 'block'});
-  $('#story-list').css({display: 'none'});
   $('#parentID').text('Start of story');
 };
 

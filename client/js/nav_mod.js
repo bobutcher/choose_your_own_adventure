@@ -14,10 +14,10 @@
  */
   $('.list-stories').on('click', function listStories(event){
     if($('#story-list').css('display') === 'none'){
-    getStoryList();
-  } else{
-    $('#story-list').css({display: 'none'});
-    $('.menu-arrow').css({display: 'none'});
+      getStoryList();
+    } else{
+      $('#story-list').css({display: 'none'});
+      $('.menu-arrow').css({display: 'none'});
   }
   });
 
@@ -63,7 +63,6 @@
 
   function newTitlePrompt() {
     if($('#create-story').css('display') === 'none'){
-        $('#story-list').css({display: 'none'});
         $('#create-story').css({display: 'block'});
         $('#new-story-name').focus();
         $('.menu-arrow').css({display: 'block'});

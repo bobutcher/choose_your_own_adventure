@@ -1,5 +1,5 @@
 #create-story{
-  position: relative;
+  position: absolute;
   left: 27%;
   width: 25%;
   padding: 30px 15px;
@@ -8,6 +8,7 @@
   font-family: $defaultFont;
   text-align: center;
   box-shadow: 3px 3px 25px black;
+  z-index: 1;
   h2{
     font-size: 1.85em;
     margin-bottom: 25px;
