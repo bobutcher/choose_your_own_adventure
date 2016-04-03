@@ -2,6 +2,7 @@
   position: absolute;
   left: 27%;
   width: 70%;
+  min-height: 535px;
   padding: 15px;
   margin-top: 15px;
   background-color: #4E9033;
@@ -75,17 +76,51 @@
     height: 450px;
     padding: 10px;
     background-color: #7DB445;
-    column-count: 2;
+    overflow: auto;
+    &::-webkit-scrollbar{
+      background-color: #1F7324;
+    }
+    &::-webkit-scrollbar-thumb{
+      background-color: #7DB445;
+      border-radius: 10px;
+      border-left: #1F7324 solid 1px;
+      border-right: #1F7324 solid 1px;
+    }
     ul{
-      width: 50%;
+      margin: auto;
+      width: 80%;
       .stepText{
         position: relative;
+      }
+      li{
+        position: relative;
+        margin: 20px;
+        section{
+          margin-top: 20px;
+        }
       }
       .deleteStep{
         position: absolute;
         top: 0;
         right: 0;
-        color: red;
+        height: 15px;
+        width: 15px;
+        text-align: center;
+        line-height: 12px;
+        color: black;
+        border: black solid 2px;
+        border-radius: 50%;
+        cursor: default;
+        &:hover{
+          @include hoverhighlight();
+        }
+      }
+      .editButton{
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 1.25em;
+        color: black;
       }
     }
   }

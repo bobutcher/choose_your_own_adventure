@@ -73,12 +73,14 @@ ns.updateStepList = function updateStepList(storyID, stepID, parentID, stepText,
                 .addClass('stepText')
                 .text(stepText)
                 .append(
-                  $('<aside>').addClass('deleteStep').text('X')
+                  $('<aside>').addClass('deleteStep').text('x')
                 );
-  var textEditButton = $('<button>')
+  var textEditButton = $('<aside>')
                       .addClass('editButton')
-                      .text('edit')
-                      .css({display: 'block'});
+                      .css({display: 'block'})
+                      .append(
+                        $('<i>').addClass("fa fa-pencil-square-o")
+                      );
   var textEdit = $('<input>')
                       .addClass('editOption textEdit')
                       .val(stepText)
