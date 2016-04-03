@@ -34,7 +34,7 @@ header{
   text-shadow: 0px 0px 60px #EAE3AF;
   cursor: default;
   &:hover{
-    text-shadow: 0px 0px 10px #EAE3AF;
+    @include hoverhighlight();
   }
   &:focus{
     outline: none;

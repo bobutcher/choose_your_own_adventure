@@ -8,11 +8,61 @@
   font-family: $defaultFont;
   box-shadow: 3px 3px 25px black;
   h2{
-    font-size: 1em;
+    font-size: 0.75em;
     span{
-      font-size: 2em;
+      margin-left: 15px;
+      font-size: 2.5em;
       background-color: #7DB445;
       padding: 7px;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+  .create-story-step{
+    background-color: #7DB445;
+    margin-top: 25px;
+    width: 40%;
+    padding: 10px;
+    h3{
+      margin: 4px;
+      font-size: 1.5em;
+    }
+    h4{
+      margin: 4px;
+      margin-bottom: 15px;
+      font-size: 0.75em;
+    }
+    label{
+      font-size: 1.5em;
+    }
+    textarea, input{
+      font-family: $defaultFont;
+      font-size: 1.2em;
+      display: block;
+      border: black solid 1px;
+      background-color: #7DB445;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 4px;
+      margin-bottom: 10px;
+    }
+    textarea{
+      height: 100px;
+    }
+    #deadend-label, #deadend{
+      float: left;
+    }
+    #deadend{
+      width: 25px;
+      margin-left: 15px;
+    }
+    #create-step-button{
+      width: 50%;
+      font-size: 1.5em;
+      &:hover{
+        @include hoverhighlight();
+      }
     }
   }
 }
