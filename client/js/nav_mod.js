@@ -33,9 +33,9 @@
   }
 
   function showStoryList(array){
-    $('#story-list').empty();
+    $('#story-list').find('ul').empty();
     array.forEach(function addStoryToList(element){
-      $('#story-list')
+      $('#story-list').find('ul')
         .append(
           $('<li>').text(element.title).attr({id: element.ID})
             // .append(
@@ -44,6 +44,7 @@
         );
     });
     $('#story-list').css({display: 'block'});
+    $('.menu-arrow').css({display: 'block'});
     $('#create-story').css({display: 'none'});
   }
 

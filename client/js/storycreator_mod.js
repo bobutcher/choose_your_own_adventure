@@ -44,7 +44,7 @@ ns.storyEditUI = function storyEditUI(storyName, storyID) {
   $('#create-story').css({display: 'none'});
   $('#edit-story').css({display: 'block'});
   $('#story-list').css({display: 'none'});
-  $('#parentID').text('Beginning');
+  $('#parentID').text('Start of story');
 };
 
 

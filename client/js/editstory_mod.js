@@ -86,7 +86,10 @@ ns.updateStepList = function updateStepList(storyID, stepID, parentID, stepText,
   var optionA = $('<p>')
                   .attr({id: optionAID})
                   .addClass('choiceA')
-                  .text(choiceA);
+                  .text(choiceA)
+                  .append(
+                    $('<aside>').addClass('childID').text('')
+                  );
   var optionAEdit = $('<input>')
                       .addClass('editOption editOptionA')
                       .val(choiceA)
@@ -97,7 +100,10 @@ ns.updateStepList = function updateStepList(storyID, stepID, parentID, stepText,
   var optionB = $('<p>')
                   .attr({id: optionBID})
                   .addClass('choiceB')
-                  .text(choiceB);
+                  .text(choiceB)
+                  .append(
+                    $('<aside>').addClass('childID').text('')
+                  );
   var optionBEdit = $('<input>')
                       .addClass('editOption editOptionB')
                       .val(choiceB)

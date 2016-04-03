@@ -6,7 +6,8 @@
   width: 30%;
   background-color: #206B20;
   text-align: center;
-  border: outset #174A16 5px;
+  border: solid #174A16 5px;
+  box-shadow: 6px 6px 25px black;
   border-radius: 10px;
   p{
     padding-top: 22px;
@@ -25,7 +26,7 @@
     background-color: #7DB445;
     border-radius: 5px;
     margin: 20px;
-    box-shadow: 0px 0px 100px #EAE3AF;
+    box-shadow: 0px 0px 175px #EAE3AF;
     font-family: $defaultFont;
     font-size: 1em;
     &:focus{

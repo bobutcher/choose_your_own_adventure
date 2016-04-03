@@ -1,15 +1,37 @@
 #story-list{
   list-style: none;
   font-family: $defaultFont;
-  font-size: 1.5em;
-  margin: auto;
-  margin-top: 20px;
+  font-size: 1em;
+  text-align: right;
+  position: relative;
+  top: 0;
+  left: 2%;
+  margin-top: 15px;
   display: block;
-  width: 30%;
-  line-height: 50px;
-  background-color: #4B9030;
+  width: 20%;
+  background-color: #7DB445;
+  box-shadow: 6px 6px 25px black;
   li{
-    margin-top: 10px;
-    margin-left: 20px;
+    width: 100%;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  li:nth-child(odd){
+    background-color: #B5D577;
+  }
+  li:nth-child(even){
+    background-color: #7DB445;
+  }
+  .menu-arrow{
+    display: none;
+    background-color: #B5D577;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: -7px;
+    left: 75%;
+    transform: rotate(45deg);
+    z-index: -1;
   }
 }
