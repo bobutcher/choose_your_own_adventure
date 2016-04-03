@@ -5,7 +5,6 @@
 //existing stories from the story list. It should:
 //1. make an ajax request for the selected story
 //2. clear the UI and replace it with the edit story UI of the selected story
-//3. be able to delete a story from the list
 
   $('#story-list').on('click', 'li', function chooseStory(event) {
     ajaxForSelectedStory($(this).attr('id'));
@@ -44,10 +43,6 @@
     ns.storyEditUI(storyData.title, storyData.storyID);
     $('.create-story-step').css({display: 'none'});
   }
-
-  $('.deleteButton').on('click', function deleteEntry(event) {
-
-  });
 
   window.ns = ns;
 })(window.ns || {});

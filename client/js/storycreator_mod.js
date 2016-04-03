@@ -27,10 +27,10 @@ function addNewStory(storyName) {
     url: '/stories/newstory',
     headers: {authorization: ns.currentToken()},
     dataType: 'json',
-    contentType: 'application.json',
-    data: JSON.Stringify({title: storyName}),
+    contentType: 'application/json',
+    data: JSON.stringify({title: storyName}),
     success: function storyPosted(data) {
-      storyEditUI(data.title, data.ID);
+      ns.storyEditUI(data.title, data.ID);
     },
     error: function errorStoryPosted(xhr) {
       console.log(xhr);

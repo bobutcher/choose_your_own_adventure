@@ -38,9 +38,9 @@
       $('#story-list')
         .append(
           $('<li>').text(element.title).attr({id: element.ID})
-            .append(
-              $('<aside>').text('X').addClass('deleteButton')
-            )
+            // .append(
+            //   $('<aside>').text('X').addClass('deleteButton')
+            // )
         );
     });
     $('#story-list').css({display: 'block'});

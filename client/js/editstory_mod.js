@@ -38,7 +38,7 @@ function addNewStepToAjax(storyID, parentID, stepText, choiceA, choiceB, deadend
     contentType: 'application/json',
     data: JSON.stringify({storyID: storyID, parentID: parentID, steptext: stepText, choiceA: choiceA, choiceB: choiceB, deadend: deadend}),
     success: function newStepAdded(data) {
-      updateStepList(parentID, stepText, choiceA, choiceB, data.optionAID, data.optionBID, deadend);
+      ns.updateStepList(storyID, data.stepID, parentID, stepText, choiceA, choiceB, data.optionAID, data.optionBID, deadend);
     },
     error: function errorStepAdded(xhr) {
       console.log(xhr);
@@ -56,14 +56,25 @@ function addNewStepToAjax(storyID, parentID, stepText, choiceA, choiceB, deadend
  * @param  {[string]} choiceA  [text from step editing choice A field]
  * @param  {[string]} choiceB  [text from step editing choice B field]
  */
-ns.updateStepList = function updateStepList(parentID, stepText, choiceA, choiceB, optionAID, optionBID, deadend) {
+ns.updateStepList = function updateStepList(storyID, stepID, parentID, stepText, choiceA, choiceB, optionAID, optionBID, deadend) {
+  var story = $('<aside>')
+                .addClass('storyID')
+                .css({display: 'none'})
+                .text(storyID);
+  var step = $('<aside>')
+                .addClass('stepID')
+                .css({display: 'none'})
+                .text(stepID);
   var parent = $('<aside>')
                 .addClass('parentID')
                 .css({display: 'none'})
                 .text(parentID);
   var text = $('<p>')
                 .addClass('stepText')
-                .text(stepText);
+                .text(stepText)
+                .append(
+                  $('<aside>').addClass('deleteStep').text('X')
+                );
   var textEditButton = $('<button>')
                       .addClass('editButton')
                       .text('edit')
@@ -97,6 +108,8 @@ ns.updateStepList = function updateStepList(parentID, stepText, choiceA, choiceB
   if (!deadend) {
     $('.stepsList')
       .append($('<li>')
+                  .append(story)
+                  .append(step)
                   .append(parent)
                   .append($('<section>')
                     .append(text)
@@ -118,6 +131,8 @@ ns.updateStepList = function updateStepList(parentID, stepText, choiceA, choiceB
   else {
     $('.stepsList')
       .append($('<li>')
+                  .append(parent)
+                  .append(step)
                   .append(parent)
                   .append($('<section>')
                     .append(text)
@@ -204,9 +219,35 @@ $('.stepsList').on('click', '.addStepButtonB', function addNewStepToB() {
 function addNewStep(IDNumber) {
   $('#parentID').text(IDNumber);
   $('.create-story-step').css({display: 'block'});
-
 }
 
+/**
+ * This function deletes a step from a story.
+ */
+$('.stepsList').on('click', '.deleteStep', function deleteStep() {
+    ajaxDeleteStep(
+      $(this).closest('li').find('.storyID').text(),
+      $(this).closest('li').find('.stepID').text()
+    );
+    $(this).closest('li').remove();
+});
+
+function ajaxDeleteStep(storyID, stepID) {
+  $.ajax({
+    type: 'PATCH',
+    url: '/stories/deletestep',
+    headers: {authorization: ns.currentToken()},
+    dataType: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify({storyID: storyID, stepID: stepID}),
+    success: function deletedStep(data) {
+      console.log(data);
+    },
+    error: function errorDeletedStep(xhr) {
+      console.log(xhr);
+    }
+  });
+}
 
   window.ns = ns;
 })(window.ns || {});

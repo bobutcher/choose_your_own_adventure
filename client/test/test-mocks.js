@@ -78,4 +78,11 @@ if (window.location.search.match(/[^a-z]debug([^a-z]|$)/i)) {
       proxy: 'test/mocks/story0004.json'
     });
 
+    // delete a step
+    $.mockjax({
+      url: '/stories/deletestep',
+      type: 'PATCH',
+      proxy: 'test/mocks/deletestep.json'
+    });
+
 }
