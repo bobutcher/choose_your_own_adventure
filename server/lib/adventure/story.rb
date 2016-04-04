@@ -1,5 +1,5 @@
-class Story < ActiveRecord::Base
-
-
-
+module Adventure
+  class Story < ActiveRecord::Base
+ has_many :steps
+  end
 end

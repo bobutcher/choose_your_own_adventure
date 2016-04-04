@@ -24,9 +24,18 @@ class AppTest < Minitest::Test
   def test_can_call_single_story
     header "CONTENT_TYPE", "application/json"
     response = get "/stories/1"
-
   end
 
+  def test_can_update_story
+    skip
+    response = patch "/login/editstep"
+    story_1 = Story.create(title: "The Knights of")
+    story_2 = Story.create(title: "The Knights of the Round Table")
+    assert_equal "The Knights of the Round Table", story_2
+  end
+  def test_can_delete_story
+    response = delete /stories/delete
+  end
   def test_returns_404_error
     skip
   end

@@ -9,7 +9,7 @@ class StepMigration < ActiveRecord::Migration
       t.integer :option_one_id
       t.string :option_two_text
       t.integer :option_two_id
-      t.boolean :last_step?
+      t.boolean :last_step
     end
   end
 

@@ -30,6 +30,17 @@ get "/stories/:id" do
 
 end
 
+patch "/stories/editstep" do
+  body = request.body.read
+  payload = JSON.parse(body)
+  payload.to_json
+end
+
+delete "/stories/delete" do
+  story = Adventure::Story.find(params[:id])
+  story.destroy!
+end
+
 
 
 # get "/stories/storylist" do
