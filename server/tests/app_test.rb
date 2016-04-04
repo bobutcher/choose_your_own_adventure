@@ -34,7 +34,7 @@ class AppTest < Minitest::Test
     assert_equal "The Knights of the Round Table", story_2
   end
   def test_can_delete_story
-    response = delete /stories/delete
+    response = "delete /stories/delete"
   end
   def test_returns_404_error
     skip
