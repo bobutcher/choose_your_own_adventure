@@ -15,39 +15,74 @@
  */
 if (window.location.search.match(/[^a-z]debug([^a-z]|$)/i)) {
 
-    // Create a new story
+    // Get token
     $.mockjax({
-      url: '/path/to/create', // What should this be? Negotiate it!
-      type: '??',             // This is the HTTP method for this action
-      proxy: 'mocks/new-story.json'
+      url: '/login',
+      type: 'POST',
+      proxy: 'test/mocks/token.json'
     });
 
-    // Retrieve a story
+    // Retrieve the list of stories
     $.mockjax({
-      url: '/where/is/it',
-      type: '??',
-      proxy: 'mocks/story.json'
+      url: '/stories/storylist',
+      type: 'GET',
+      proxy: 'test/mocks/storylist.json'
     });
 
-    // Retrieve all steps for a story
+    // POST a new story
     $.mockjax({
-      url: '/steps-in-a-story',
-      type: '??',
-      proxy: 'mocks/story-steps.json'
+      url: '/stories/newstory',
+      type: 'POST',
+      proxy: 'test/mocks/newstory.json'
     });
 
-    // Create a new step in a story
+    // add a new step to a story
     $.mockjax({
-      url: '/step-me-up',
-      type: '??',
-      proxy: 'mocks/new-step.json'
+      url: '/stories/newstep',
+      type: 'PATCH',
+      proxy: 'test/mocks/newstep.json'
     });
 
-    // Update a step in a story
+    // edit a step in a story
     $.mockjax({
-      url: '/step-update',
-      type: '??',
-      proxy: 'mocks/step-update.json'
+      url: '/stories/editstep',
+      type: 'PATCH',
+      proxy: 'test/mocks/stepedit.json'
+    });
+
+    // find story by ID 0001
+    $.mockjax({
+      url: '/stories/0001',
+      type: 'GET',
+      proxy: 'test/mocks/story0001.json'
+    });
+
+    // find story by ID 0002
+    $.mockjax({
+      url: '/stories/0002',
+      type: 'GET',
+      proxy: 'test/mocks/story0002.json'
+    });
+
+    // find story by ID 0003
+    $.mockjax({
+      url: '/stories/0003',
+      type: 'GET',
+      proxy: 'test/mocks/story0003.json'
+    });
+
+    // find story by ID 0004
+    $.mockjax({
+      url: '/stories/0004',
+      type: 'GET',
+      proxy: 'test/mocks/story0004.json'
+    });
+
+    // delete a step
+    $.mockjax({
+      url: '/stories/deletestep',
+      type: 'PATCH',
+      proxy: 'test/mocks/deletestep.json'
     });
 
 }

@@ -1,4 +1,16 @@
+@import 'cssreset';
+@import 'variables';
+@import 'mixins';
 
-nav, #create-story, #edit-story, #story-list {
+#story-side, #create-story, #edit-story, #story-list {
     display: none;
 }
+body{
+  background-color: #1F7324;
+}
+
+@import 'headerandnav';
+@import 'login';
+@import 'storylist';
+@import 'newstory';
+@import 'editstory';

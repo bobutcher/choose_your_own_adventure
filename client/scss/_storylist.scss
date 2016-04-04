@@ -1,0 +1,41 @@
+#story-list{
+  list-style: none;
+  font-family: $defaultFont;
+  font-size: 1em;
+  text-align: right;
+  position: relative;
+  top: 0;
+  left: 2%;
+  margin-top: 15px;
+  float: left;
+  width: 20%;
+  background-color: #7DB445;
+  box-shadow: 6px 6px 25px black;
+  cursor: default;
+  transition: 0.5s;
+  li{
+    width: 100%;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    &:hover{
+      @include hoverhighlight();    
+    }
+  }
+  li:nth-child(odd){
+    background-color: #4E9033;
+  }
+  li:nth-child(even){
+    background-color: #7DB445;
+  }
+  .menu-arrow{
+    display: none;
+    background-color: #4E9033;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: -7px;
+    left: 75%;
+    transform: rotate(45deg);
+  }
+}

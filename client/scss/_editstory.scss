@@ -1,0 +1,162 @@
+#edit-story{
+  position: absolute;
+  left: 27%;
+  width: 70%;
+  min-height: 535px;
+  padding: 12px;
+  margin-top: 15px;
+  background-color: #4E9033;
+  font-family: $defaultFont;
+  box-shadow: 3px 3px 25px black;
+  h2{
+    font-size: 0.75em;
+    span{
+      margin-left: 15px;
+      font-size: 2.5em;
+      background-color: #7DB445;
+      padding: 7px;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+  .create-story-step{
+    background-color: #7DB445;
+    margin-top: 25px;
+    width: 40%;
+    height: 450px;
+    padding: 10px;
+    float: left;
+    h3{
+      margin: 4px;
+      font-size: 1.5em;
+    }
+    h4{
+      margin: 4px;
+      margin-bottom: 15px;
+      font-size: 0.75em;
+    }
+    label{
+      font-size: 1.5em;
+    }
+    textarea, input{
+      font-family: $defaultFont;
+      font-size: 1.2em;
+      display: block;
+      border: black solid 1px;
+      background-color: #7DB445;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 4px;
+      margin-bottom: 10px;
+    }
+    textarea{
+      height: 100px;
+    }
+    #deadend-label, #deadend{
+      float: left;
+    }
+    #deadend{
+      width: 25px;
+      margin-left: 15px;
+    }
+    #create-step-button{
+      width: 50%;
+      font-size: 1.5em;
+      &:hover{
+        @include hoverhighlight();
+      }
+    }
+  }
+  .existing-steps{
+    position: absolute;
+    top: 68px;
+    right: 15px;
+    width: 50%;
+    height: 450px;
+    padding: 10px;
+    background-color: #7DB445;
+    overflow: auto;
+    &::-webkit-scrollbar{
+      background-color: #1F7324;
+    }
+    &::-webkit-scrollbar-thumb{
+      background-color: #7DB445;
+      border-radius: 10px;
+      border-left: #1F7324 solid 1px;
+      border-right: #1F7324 solid 1px;
+    }
+    ul{
+      margin: auto;
+      width: 80%;
+      .stepText{
+        position: relative;
+        min-height: 100px;
+        padding: 10px;
+      }
+      .textEdit{
+        position: relative;
+        background-color: #7DB445;
+        border: solid black 1px;
+        width: 65%;
+        min-height: 100px;
+        padding: 10px;
+        font-family: $defaultFont;
+        font-size: 1em;
+        vertical-align: top;
+      }
+      li{
+        background-color: #1F7324;
+        position: relative;
+        margin: 0px;
+        section{
+          margin-top: 20px;
+          p{
+            padding: 10px;
+          }
+          .editOption{
+            font-family: $defaultFont;
+            background-color: #7DB445;
+            border: solid black 1px;
+          }
+        }
+        .addStepButtonA, .addStepButtonB{
+          position: relative;
+          top: -37px;
+          padding: 10px;
+          font-size: 0.75em;
+          text-align: right;
+          i{
+            font-size: 1.5em;
+            margin-left: 5px;
+          }
+        }
+      }
+      .deleteStep{
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 10px;
+        height: 15px;
+        width: 15px;
+        text-align: center;
+        line-height: 12px;
+        color: black;
+        border: black solid 2px;
+        border-radius: 50%;
+        cursor: default;
+        &:hover{
+          @include hoverhighlight();
+        }
+      }
+      .editButton{
+        padding: 10px;
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 1.25em;
+        color: black;
+      }
+    }
+  }
+}
